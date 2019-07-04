@@ -13,6 +13,7 @@ FIELD_NAMES = ["class", "rule", "transform", "example", "explanation"]
 infile = sys.argv[1]
 basename_file_name = os.path.splitext(infile)[0]
 outfile = sys.argv[2] if len(sys.argv) > 2 else basename_file_name + ".csv"
+infile_tmp = infile + ".tmp"
 
 ### STRIP NON-PRINTABLE CHARACTERS ####
 with open(infile, 'r') as f:
@@ -21,12 +22,13 @@ with open(infile, 'r') as f:
 # https://stackoverflow.com/questions/8689795/how-can-i-remove-non-ascii-characters-but-leave-periods-and-spaces-using-python/8689826#8689826
 printable = set(string.printable)
 stripped_data = filter(lambda x: x in printable, data)
+stripped_data = stripped_data.replace("\\'","")
 
-with open(infile, "w") as f:
+with open(infile_tmp, "w") as f:
     f.write(stripped_data)
 #######################################
 
-with open(infile, 'r') as f:
+with open(infile_tmp, 'r') as f:
     contents = yaml.safe_load(f)
 
 mappings = []
