@@ -8,7 +8,7 @@ import csv
 import os.path
 import string
 
-FIELD_NAMES = ["class", "rule", "transform", "example"]
+FIELD_NAMES = ["class", "rule", "transform", "example", "explanation"]
 
 infile = sys.argv[1]
 basename_file_name = os.path.splitext(infile)[0]
