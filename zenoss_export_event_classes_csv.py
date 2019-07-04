@@ -1,5 +1,6 @@
 import sys
 sys.path.append('/home/zenoss/.local/lib/python2.6/site-packages')
+sys.path.append('/usr/lib64/python2.6/site-packages')
 
 # now yaml works
 import yaml
