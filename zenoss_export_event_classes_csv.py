@@ -8,7 +8,7 @@ import csv
 import os.path
 import string
 
-FIELD_NAMES = ["class", "rule", "transform", "example", "explanation"]
+FIELD_NAMES = ["class", "mapping_id", "rule", "transform", "example", "explanation"]
 
 infile = sys.argv[1]
 basename_file_name = os.path.splitext(infile)[0]
@@ -35,9 +35,10 @@ mappings = []
 
 for name, evt in contents['event_classes'].iteritems():
     if 'mappings' in evt:
-        for event_class_key, mapping in evt['mappings'].iteritems():
+        for mapping_id, mapping in evt['mappings'].iteritems():
             mappings.append({
                 "class": name,
+                "mapping_id": mapping_id,
                 "rule": mapping.get('rule'),
                 "transform": mapping.get('transform'),
                 "example": mapping.get('example'),
@@ -47,6 +48,7 @@ for name, evt in contents['event_classes'].iteritems():
     else:
         mappings.append({
             "class": name,
+            "mapping_id": None,
             "rule": None,
             "transform": None,
             "example": None,
