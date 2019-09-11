@@ -49,12 +49,16 @@ def yaml_print(key='', value='', indent=0):
         for l in str(value).splitlines():
             print('  {}{}'.format(head, l))
     else:
-        if ':' in value or '%' in value or '#' in value:
-            print('{}{}{!r}'.format(head, key, value))
+        output = ""
+        if ':' in value or '%' in value or '#' in value or '*' in value:
+            output = "{}{}{!r}".format(head, key, value)
         elif value.startswith("'") or value.startswith("["):
-            print('{}{}{!r}'.format(head, key, value))
+            output = "{}{}{!r}".format(head, key, value)
         else:
-            print('{}{}{}'.format(head, key, value))
+            output = "{}{}{}".format(head, key, value)
+        
+	output = output.replace("\\'","''")
+	print output
 
 
 yaml_print(key='name', value=ZENPACK_NAME, indent=0)

@@ -22,7 +22,6 @@ with open(infile, 'r') as f:
 # https://stackoverflow.com/questions/8689795/how-can-i-remove-non-ascii-characters-but-leave-periods-and-spaces-using-python/8689826#8689826
 printable = set(string.printable)
 stripped_data = filter(lambda x: x in printable, data)
-stripped_data = stripped_data.replace("\\'","")
 
 with open(infile_tmp, "w") as f:
     f.write(stripped_data)
