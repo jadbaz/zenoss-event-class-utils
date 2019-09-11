@@ -10,7 +10,7 @@ out_csv="${basename}.csv"
 
 echo "Started extracting event classes to ${out_yml}"
 echo "*************************************"
-time zendmd --script ${DIR}/zenoss_list_event_classes.py | tail -n +2 > ${out_yml}
+time ZENHOME=/opt/zenoss /opt/zenoss/bin/zendmd --script ${DIR}/zenoss_list_event_classes.py | tail -n +2 > ${out_yml}
 echo "Finished extracting event classes to ${out_yml}"
 
 echo "*************************************"
