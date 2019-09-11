@@ -17,6 +17,6 @@ echo "*************************************"
 
 echo "Started exporting event classes to ${out_csv}"
 echo "*************************************"
-time python2.7 ${DIR}/zenoss_export_event_classes_csv.py ${out_yml} ${out_csv}
+time python ${DIR}/zenoss_export_event_classes_csv.py ${out_yml} ${out_csv}
 echo "Finished exporting event classes to ${out_csv}"
 
